@@ -1,0 +1,5 @@
+class FirescriptRuntime
+  static bindType (type, value)
+    return value
+
+export ** FirescriptRuntime
