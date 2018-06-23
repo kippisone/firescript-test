@@ -1,0 +1,34 @@
+image: node:8
+stages:
+  - test
+  - build
+  - publish
+
+test:
+  stage: test
+  before_script:
+    - npm install
+  script:
+    - npm run test
+
+build:
+  stage: build
+  only:
+    - /^v\d+\.\d+\.\d+$/
+  except:
+    - branches
+  script:
+    - npm install -g firescript
+    - fire build
+
+publish:
+  stage: publish
+  only:
+    - /^v\d+\.\d+\.\d+$/
+  except:
+    - branches
+  script:
+    - echo "_auth=$NPM_AUTH" > ~/.npmrc
+    - echo "email=$NPM_AUTH_EMAIL" >> ~/.npmrc
+    - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
+    - npm publish
