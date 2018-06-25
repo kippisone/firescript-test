@@ -1,1 +1,5 @@
-export * from 'src/FirescriptRuntime'
+import Runtime from 'src/FirescriptRuntime'
+import * as constants from 'src/constants'
+
+const obj = Object.assign({}, Runtime, constants)
+export ** obj

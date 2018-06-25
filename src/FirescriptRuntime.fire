@@ -1,5 +1,15 @@
 class FirescriptRuntime
   static bindType (type, value)
+    if typeof type === 'string'
+      return FirescriptRuntime.isTypeof(type, value)
+
     return value
+
+  static isTypeof (type, value)
+    switch (type)
+      case 'fs-str'
+        return typeof value === 'string'
+
+    throw new TypeError('')
 
 export ** FirescriptRuntime

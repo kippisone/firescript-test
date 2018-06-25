@@ -5,3 +5,6 @@ describe('FirescriptRuntime', () =>
   describe('class', () =>
     it('should return a static class', () =>
       inspect(FirescriptRuntime).isCalss()
+    )
+  )
+)

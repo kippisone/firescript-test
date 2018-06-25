@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers fire:../firescript --reporter lagoon-reporter tests/*.spec.fire"
   },
-  "author": "Andi Heinkelein <kippis@noname-media.com>",
+  "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",
   "devDependencies": {
     "inspect.js": "1.11.7",
