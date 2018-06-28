@@ -1,0 +1,10 @@
+import ** as __FS from '../../'
+import * as inspect from 'inspect.js'
+
+describe('Typing', () =>
+  describe('str', () =>
+    it('validates if input is typeof str', () =>
+      __FS.typing(__FS.TYPE_STR, 'banana')
+    )
+  )
+)

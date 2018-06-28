@@ -1,5 +1,5 @@
 class FirescriptRuntime
-  static bindType (type, value)
+  static typing (type, value)
     if typeof type === 'string'
       return FirescriptRuntime.isTypeof(type, value)
 
