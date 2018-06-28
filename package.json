@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "xtest": "mocha --compilers fire:../firescript --reporter lagoon-reporter tests/*.spec.fire",
-    "test": "mocha --reporter lagoon-reporter dist/tests/*.spec.fire"
+    "test": "mocha --reporter lagoon-reporter dist/tests/*.spec.js"
   },
   "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",
