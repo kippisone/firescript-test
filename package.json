@@ -4,7 +4,8 @@
   "description": "Firescript runtime",
   "main": "dist/app.js",
   "scripts": {
-    "test": "mocha --compilers fire:../firescript --reporter lagoon-reporter tests/*.spec.fire"
+    "xtest": "mocha --compilers fire:../firescript --reporter lagoon-reporter tests/*.spec.fire",
+    "test": "mocha --reporter lagoon-reporter dist/tests/*.spec.fire"
   },
   "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",

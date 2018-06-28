@@ -10,6 +10,6 @@ class FirescriptRuntime
       case 'fs-str'
         return typeof value === 'string'
 
-    throw new TypeError('')
+    throw new TypeError('Unexpeted data type')
 
 export ** FirescriptRuntime
