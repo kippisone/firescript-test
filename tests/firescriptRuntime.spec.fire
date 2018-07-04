@@ -1,10 +1,14 @@
-import ** as inspect from 'inspect.js'
-import FirescriptRuntime from '../../'
+import * as inspect from 'inspect.js'
+import ** as __FS from '../'
 
-describe('FirescriptRuntime', () =>
+describe('__FS', () =>
   describe('class', () =>
     it('should return a static class', () =>
-      inspect(FirescriptRuntime).isCalss()
+      inspect(__FS).isObject()
+    )
+
+    it('should have a typing method', () =>
+      inspect(__FS.typing).isFunction()
     )
   )
 )

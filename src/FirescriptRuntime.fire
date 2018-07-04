@@ -12,4 +12,4 @@ class FirescriptRuntime
 
     throw new TypeError('Unexpeted data type')
 
-export ** FirescriptRuntime
+export FirescriptRuntime

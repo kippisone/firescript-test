@@ -1,4 +1,4 @@
-import ** as __FS from '../../'
+import ** as __FS from '../'
 import * as inspect from 'inspect.js'
 
 describe('Typing', () =>
