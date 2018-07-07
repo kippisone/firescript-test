@@ -1,15 +1,41 @@
+import
+  TYPE_ANY
+  TYPE_ARR
+  TYPE_BOOL
+  TYPE_FUNC
+  TYPE_NUM
+  TYPE_OBJ
+  TYPE_REG
+  TYPE_STR from './constants'
+
 class FirescriptRuntime
   static typing (type, value)
-    if typeof type === 'string'
-      return FirescriptRuntime.isTypeof(type, value)
+    if FirescriptRuntime.isTypeof(type, value)
+      return value
 
-    return value
+    throw new TypeError('Unexpeted data type')
 
   static isTypeof (type, value)
     switch (type)
-      case 'fs-str'
+      case TYPE_ANY
+        return value !== undefined
+      case TYPE_ARR
+        return Array.isArray(value)
+        return value !== undefined
+      case TYPE_BOOL
+        return typeof value === 'boolean'
+      case TYPE_FUNC
+        return typeof value === 'function'
+      case TYPE_NUM
+        return typeof value === 'number'
+      case TYPE_OBJ
+        const isRegExp = value instanceof RegExp
+        return typeof value === 'object' && value !== null && !isRegExp && !Array.isArray(value)
+      case TYPE_REG
+        return value instanceof RegExp
+      case TYPE_STR
         return typeof value === 'string'
 
-    throw new TypeError('Unexpeted data type')
+    return null
 
 export FirescriptRuntime
