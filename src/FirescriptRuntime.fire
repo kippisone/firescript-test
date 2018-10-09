@@ -38,4 +38,7 @@ class FirescriptRuntime
 
     return null
 
+  static reg(r)
+    return new SuperReg(r)
+
 export FirescriptRuntime
