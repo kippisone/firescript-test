@@ -1,5 +1,5 @@
 import * as inspect from 'inspect.js'
-import ** as __FS from '../'
+import __FS from '../'
 
 describe('__FS', () =>
   describe('class', () =>

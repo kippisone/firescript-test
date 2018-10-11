@@ -1,8 +1,12 @@
 {
-  "src": "./",
-  "dest": "dist/",
+  "src": "./src",
+  "dest": "./dist/",
   "features": {
     "esModules": false,
     "esClasses": false
-  }
+  },
+  "copy": [
+    "../package.json",
+    "$ROOT/package.json"
+  ]
 }
