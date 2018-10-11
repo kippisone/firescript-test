@@ -49,7 +49,7 @@ publish:
     - branches
   script:
     - ls -la
-    - cd dist/
     - cp package.json dist/
+    - cd dist/
     - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
     - npm publish
