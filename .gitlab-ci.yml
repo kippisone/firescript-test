@@ -23,6 +23,8 @@ build:
 
 publish:
   stage: publish
+  cache:
+    - dist/
   only:
     - /^v\d+\.\d+\.\d+$/
   except:
