@@ -48,6 +48,7 @@ publish:
   except:
     - branches
   script:
+    - ls -la
     - cd dist/
     - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
     - npm publish
