@@ -13,5 +13,8 @@
     "inspect.js": "^1.11.7",
     "lagoon-reporter": "0.4.0",
     "mocha": "5.2.0"
+  },
+  "dependencies": {
+    "superreg": "^0.1.0"
   }
 }
