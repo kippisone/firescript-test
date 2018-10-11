@@ -13,6 +13,10 @@ test:
 
 build:
   stage: build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - dist/
   only:
     - /^v\d+\.\d+\.\d+$/
   except:
@@ -24,6 +28,8 @@ build:
 publish:
   stage: publish
   cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
     - dist/
   only:
     - /^v\d+\.\d+\.\d+$/
