@@ -1,7 +1,7 @@
 Firescript runtime
 ==================
 
-Firescript Runtime library
+~~Firescript Runtime library~~ This was replaced by **FireIO**
 
 Requirements
 ------------
