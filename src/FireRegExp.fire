@@ -1,0 +1,33 @@
+export class FireRegExp extends RegExp
+  static escape (pattern)
+    # return pattern.replace(/[.\\|\]*+?\[(){}^$\/]/g, '\\$&')
+
+  capture (value, groups)
+    if this.flags.indexOf('g') === -1
+      return this.findCaptureGroups(value, groups)
+    else
+      const captureGroups = []
+
+      while (true)
+        const res = this.findCaptureGroups(value, groups)
+
+        if !res
+          break
+
+        captureGroups.push(res)
+
+      return captureGroups
+
+  findCaptureGroups (value, groups)
+    const match = this.exec(value)
+    const res = {}
+
+    if !match
+      return null
+
+    const keys = Object.keys(groups)
+    keys.forEach((key) =>
+      res[groups[key]] = match[key] || null
+    )
+
+    return res

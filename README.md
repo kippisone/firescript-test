@@ -1,7 +1,7 @@
 Firescript runtime
 ==================
 
-Firescript Runtime library
+FirescriptRuntime is a runtime library required by Firescript transpiled code. This library must be included in all Firescript based projects.
 
 Requirements
 ------------

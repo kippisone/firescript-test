@@ -1,0 +1,6 @@
+import FirescriptRuntime from './FirescriptRuntime'
+import * as constants from './constants'
+
+Object.assign(FirescriptRuntime, constants)
+
+export FirescriptRuntime

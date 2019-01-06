@@ -4,15 +4,31 @@ stages:
   - build
   - publish
 
-test:
+.test: &test
   stage: test
   before_script:
     - npm install
   script:
     - npm run test
 
+Test Node 8:
+  image: node:8
+  <<: *test
+
+Test Node 9:
+  image: node:9
+  <<: *test
+
+Test Node 10:
+  image: node:10
+  <<: *test
+
 build:
   stage: build
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - dist/
   only:
     - /^v\d+\.\d+\.\d+$/
   except:
@@ -23,12 +39,17 @@ build:
 
 publish:
   stage: publish
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+    - dist/
   only:
     - /^v\d+\.\d+\.\d+$/
   except:
     - branches
   script:
-    - echo "_auth=$NPM_AUTH" > ~/.npmrc
-    - echo "email=$NPM_AUTH_EMAIL" >> ~/.npmrc
+    - ls -la
+    - cp package.json dist/
+    - cd dist/
     - echo "//registry.npmjs.org/:_authToken=$NPM_AUTH_TOKEN" >> ~/.npmrc
     - npm publish

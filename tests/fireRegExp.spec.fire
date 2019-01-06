@@ -1,0 +1,24 @@
+import * as inspect from 'inspect.js'
+import FireRegExp from '../src/FireRegExp'
+
+describe('FireRegExp', () =>
+  describe('instance', () =>
+    it('is a FireRegExp instance', () =>
+      const reg = new FireRegExp(/\d/)
+      inspect(reg).isInstanceOf(RegExp)
+    )
+  )
+
+  describe('capture()', () =>
+    it('maps capture groupas onto a regexp', () =>
+      const reg = new FireRegExp(/(foo)(bar)?/)
+      inspect(reg.capture('foobarbla'{
+        1: foo
+        2: bar
+      })).isEql({
+        foo: 'foo',
+        bar: 'bar'
+      })
+    )
+  )
+)

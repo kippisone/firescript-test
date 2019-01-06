@@ -1,8 +1,13 @@
 {
-  "src": "./",
-  "dest": "dist/",
+  "src": "./src",
+  "dest": "./dist/",
   "features": {
     "esModules": false,
-    "esClasses": false
-  }
+    "esClasses": true,
+    "fireIOModuleName": "../"
+  },
+  "copy": [
+    "../package.json",
+    "$ROOT/package.json"
+  ]
 }

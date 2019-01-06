@@ -1,20 +1,24 @@
 {
   "name": "firescript-runtime",
   "version": "0.1.0",
-  "description": "Firescript runtime",
-  "main": "dist/app.js",
+  "description": "Firescript language extenstions",
+  "main": "app.js",
   "scripts": {
-    "xtest": "mocha --require ../firescript/src/register --reporter lagoon-reporter tests/*.spec.fire",
-    "test": "mocha --reporter lagoon-reporter dist/tests/*.spec.js"
+    "test": "firetest"
   },
+  "keywords": [
+    "fire",
+    "firescript",
+    "firescript-runtime",
+    "firescript-extras"
+  ],
   "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",
   "devDependencies": {
-    "inspect.js": "^1.11.7",
-    "lagoon-reporter": "0.4.0",
-    "mocha": "5.2.0"
+    "firescript": "^0.6.2",
+    "firescript-test": "^0.7.2"
   },
   "dependencies": {
-    "superreg": "^0.1.0"
+    "args": "^5.0.0"
   }
 }

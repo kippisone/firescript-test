@@ -8,9 +8,11 @@ import
   TYPE_REG
   TYPE_STR from './constants'
 
-class FirescriptRuntime
+import FireRegExp from './FireRegExp'
+
+export class FireIO
   static typing (type, value)
-    if FirescriptRuntime.isTypeof(type, value)
+    if FireIO.isTypeof(type, value)
       return value
 
     throw new TypeError('Unexpeted data type')
@@ -39,6 +41,4 @@ class FirescriptRuntime
     return null
 
   static reg(r)
-    return new SuperReg(r)
-
-export FirescriptRuntime
+    return new FireRegExp(r)
