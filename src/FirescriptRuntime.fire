@@ -10,9 +10,9 @@ import
 
 import FireRegExp from './FireRegExp'
 
-export class FireIO
+export class FirescriptRuntime
   static typing (type, value)
-    if FireIO.isTypeof(type, value)
+    if FirescriptRuntime.isTypeof(type, value)
       return value
 
     throw new TypeError('Unexpeted data type')

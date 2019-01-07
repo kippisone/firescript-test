@@ -1,6 +1,7 @@
 import * as inspect from 'inspect.js'
 import FirescriptRuntime from '..'
 
+
 describe('FirescriptRuntime', () =>
   describe('class', () =>
     it('should return a static class', () =>
@@ -12,7 +13,7 @@ describe('FirescriptRuntime', () =>
     )
   )
 
-  describe('red', () =>
+  describe('reg', () =>
     it('returns a FireRegExp', () =>
       const reg = FirescriptRuntime.reg(/\d/)
       inspect(reg).isInstanceOf(RegExp)

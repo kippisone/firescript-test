@@ -4,10 +4,9 @@
   "features": {
     "esModules": false,
     "esClasses": true,
-    "fireIOModuleName": "../"
+    "fireRTModuleName": "../"
   },
   "copy": [
-    "../package.json",
     "$ROOT/package.json"
   ]
 }
