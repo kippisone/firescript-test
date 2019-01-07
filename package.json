@@ -1,10 +1,11 @@
 {
   "name": "firescript-runtime",
-  "version": "0.1.0",
-  "description": "Firescript language extenstions",
+  "version": "0.2.5",
+  "description": "Firescript runtime",
   "main": "app.js",
   "scripts": {
-    "test": "firetest"
+    "test": "mocha --require firescript/register --reporter lagoon-reporter tests/*.spec.fire",
+    "xtest": "mocha --reporter lagoon-reporter dist/tests/*.spec.js"
   },
   "keywords": [
     "fire",
