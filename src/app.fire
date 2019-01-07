@@ -1,4 +1,6 @@
 import FirescriptRuntime from './FirescriptRuntime'
 import * as constants from './constants'
 
-export const __FS = Object.assign({}, FirescriptRuntime, constants)
+Object.assign(FirescriptRuntime, constants)
+
+export FirescriptRuntime

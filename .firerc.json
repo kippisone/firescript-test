@@ -3,10 +3,10 @@
   "dest": "./dist/",
   "features": {
     "esModules": false,
-    "esClasses": false
+    "esClasses": true,
+    "fireRTModuleName": "../"
   },
   "copy": [
-    "../package.json",
     "$ROOT/package.json"
   ]
 }

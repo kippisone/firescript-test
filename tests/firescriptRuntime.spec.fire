@@ -1,14 +1,22 @@
 import * as inspect from 'inspect.js'
-import __FS from '../'
+import FirescriptRuntime from '..'
 
-describe('__FS', () =>
+
+describe('FirescriptRuntime', () =>
   describe('class', () =>
     it('should return a static class', () =>
-      inspect(__FS).isObject()
+      inspect(FirescriptRuntime).isClass()
     )
 
     it('should have a typing method', () =>
-      inspect(__FS.typing).isFunction()
+      inspect(FirescriptRuntime.typing).isFunction()
+    )
+  )
+
+  describe('reg', () =>
+    it('returns a FireRegExp', () =>
+      const reg = FirescriptRuntime.reg(/\d/)
+      inspect(reg).isInstanceOf(RegExp)
     )
   )
 )

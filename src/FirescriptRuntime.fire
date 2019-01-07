@@ -8,7 +8,9 @@ import
   TYPE_REG
   TYPE_STR from './constants'
 
-class FirescriptRuntime
+import FireRegExp from './FireRegExp'
+
+export class FirescriptRuntime
   static typing (type, value)
     if FirescriptRuntime.isTypeof(type, value)
       return value
@@ -39,6 +41,4 @@ class FirescriptRuntime
     return null
 
   static reg(r)
-    return new SuperReg(r)
-
-export FirescriptRuntime
+    return new FireRegExp(r)

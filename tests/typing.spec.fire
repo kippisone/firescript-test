@@ -1,76 +1,76 @@
-import __FS from '../app'
+import FirescriptRuntime as FirescriptRuntime from '..'
 import * as inspect from 'inspect.js'
 
 describe('Typing', () =>
   describe('str', () =>
     it('validates if input is typeof str', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_STR, 'banana').doesNotThrow()
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_STR, 'banana').doesNotThrow()
     )
 
     it('fails typeof str check with a num', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_STR, 123).doesThrow(TypeError)
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_STR, 123).doesThrow(TypeError)
     )
   )
 
   describe('arr', () =>
     it('validates if input is typeof array', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_ARR, ['banana']).doesNotThrow()
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_ARR, ['banana']).doesNotThrow()
     )
 
     it('fails typeof str check with an obj', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_ARR, {}).doesThrow(TypeError)
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_ARR, {}).doesThrow(TypeError)
     )
   )
 
   describe('bool', () =>
     it('validates if input is typeof boolean', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_BOOL, true).doesNotThrow()
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_BOOL, true).doesNotThrow()
     )
 
     it('fails typeof str check with a string', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_BOOL, 'true').doesThrow(TypeError)
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_BOOL, 'true').doesThrow(TypeError)
     )
   )
 
   describe('func', () =>
     it('validates if input is typeof function', () =>
       const fn = () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_FUNC, fn).doesNotThrow()
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_FUNC, fn).doesNotThrow()
     )
 
     it('fails typeof str check with a string', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_FUNC, 'test').doesThrow(TypeError)
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_FUNC, 'test').doesThrow(TypeError)
     )
   )
 
   describe('num', () =>
     it('validates if input is typeof number', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_NUM, 123).doesNotThrow()
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_NUM, 123).doesNotThrow()
     )
 
     it('fails typeof str check with a string', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_NUM, '123').doesThrow(TypeError)
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_NUM, '123').doesThrow(TypeError)
     )
   )
 
   describe('obj', () =>
     it('validates if input is typeof object', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_OBJ, {}).doesNotThrow()
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_OBJ, {}).doesNotThrow()
     )
 
     it('fails typeof str check with an array', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_OBJ, []).doesThrow(TypeError)
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_OBJ, []).doesThrow(TypeError)
     )
   )
 
   describe('reg', () =>
     it('validates if input is typeof regexp', () =>
       const reg = new RegExp('foo')
-      inspect(__FS.typing).withArgs(__FS.TYPE_REG, reg).doesNotThrow()
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_REG, reg).doesNotThrow()
     )
 
     it('fails typeof str check with a string', () =>
-      inspect(__FS.typing).withArgs(__FS.TYPE_REG, '/123/').doesThrow(TypeError)
+      inspect(FirescriptRuntime.typing).withArgs(FirescriptRuntime.TYPE_REG, '/123/').doesThrow(TypeError)
     )
   )
 )

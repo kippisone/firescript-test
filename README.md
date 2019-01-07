@@ -1,7 +1,7 @@
 Firescript runtime
 ==================
 
-~~Firescript Runtime library~~ This was replaced by **FireIO**
+FirescriptRuntime is a runtime library required by Firescript transpiled code. This library must be included in all Firescript based projects.
 
 Requirements
 ------------

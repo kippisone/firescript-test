@@ -7,6 +7,12 @@
     "test": "mocha --require firescript/register --reporter lagoon-reporter tests/*.spec.fire",
     "xtest": "mocha --reporter lagoon-reporter dist/tests/*.spec.js"
   },
+  "keywords": [
+    "fire",
+    "firescript",
+    "firescript-runtime",
+    "firescript-extras"
+  ],
   "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",
   "devDependencies": {
