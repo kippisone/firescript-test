@@ -12,7 +12,7 @@ describe('FireRegExp', () =>
   describe('capture()', () =>
     it('maps capture groupas onto a regexp', () =>
       const reg = new FireRegExp(/(foo)(bar)?/)
-      inspect(reg.capture('foobarbla'{
+      inspect(reg.capture('foobarbla', {
         1: 'foo'
         2: 'bar'
       })).isEql({

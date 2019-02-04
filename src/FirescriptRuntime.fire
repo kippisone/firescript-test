@@ -8,6 +8,7 @@ import
   TYPE_REG
   TYPE_STR from './constants'
 
+import FireError from './FireError'
 import FireRegExp from './FireRegExp'
 
 export class FirescriptRuntime

@@ -1,0 +1,63 @@
+import * as fs from 'fs'
+import FireRegExp from './FireRegExp'
+
+const red = '\u001b[38;5;160m'
+const yellow = '\u001b[38;5;226m'
+const dgrey = '\u001b[38;5;244m'
+const lgrey = '\u001b[38;5;250m'
+const azure = '\u001b[38;5;39m'
+const uncolor = '\u001b[m'
+
+func printSource (file, line, column)
+  const source = fs.readFileSync(file, 'utf8')
+  const lines = source.split('\n')
+  const editor = []
+
+  const start = Math.max(1, parseInt(line) - 3)
+  const stop = Math.min(lines.length, parseInt(line) + 3)
+
+  let str = ''
+  for i = start - 1; i < stop; i++
+    const l = lines[i]
+    const lineNum = String(i + 1).padStart(String(stop).length, ' ')
+    editor.push('${lgrey}${lineNum} ${dgrey}|${uncolor} ${lines[i]}')
+
+  return editor.join('\n')
+
+func firescriptErrorHandler ()
+  const stack = this.stack.split('\n')
+  const reg = new FireRegExp(/at\s+(.+)\s+\((.+?):(\d+):(\d+)\)/)
+
+  const msg = stack.shift()
+  const colorizedStack = stack.map((line) =>
+    const cap = reg.capture(line, {
+      1: 'method'
+      2: 'file'
+      3: 'line'
+      4: 'column'
+    })
+
+    if !cap
+      return ''
+
+    let str = ' at ${azure}${cap.method}${uncolor} '
+    let source = ''
+
+    if cap.file.indexOf('/node_modules/') !== -1
+      str += '${dgrey}${cap.file}${uncolor}'
+    elif cap.file.endsWith('.fire')
+      str += '${yellow}${cap.file}${uncolor}'
+      source = '\n' + printSource(cap.file, cap.line, cap.column) + '\n\n'
+    else
+      str += '${lgrey}${cap.file}${uncolor}'
+
+    str += ' ${cap.line}:${cap.column}'
+    return source + str
+  ).join('\n')
+
+  const nl = '\n'
+  this.stack = '${msg}${nl}${colorizedStack}'
+
+  return '${red}Firescript Error${uncolor}'
+
+Error.prototype.toString = firescriptErrorHandler
