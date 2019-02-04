@@ -1,6 +1,6 @@
 {
   "name": "firescript-runtime",
-  "version": "0.2.5",
+  "version": "0.3.1",
   "description": "Firescript runtime",
   "main": "app.js",
   "scripts": {
@@ -15,10 +15,9 @@
   "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",
   "devDependencies": {
-    "firescript": "^0.6.2",
-    "firescript-test": "^0.7.2"
-  },
-  "dependencies": {
-    "args": "^5.0.0"
+    "firescript": "^0.7.1",
+    "inspect.js": "^1.11.8",
+    "lagoon-reporter": "^0.5.0",
+    "mocha": "5.2.0"
   }
 }
