@@ -43,15 +43,22 @@ func firescriptErrorHandler ()
     let str = ' at ${azure}${cap.method}${uncolor} '
     let source = ''
 
+    let lineNum = parseInt(cap.line)
+    let columnNum = parseInt(cap.column)
+
     if cap.file.indexOf('/node_modules/') !== -1
       str += '${dgrey}${cap.file}${uncolor}'
     elif cap.file.endsWith('.fire')
+      const loc = getLocation(cap.file, lineNum, columnNum)
+      lineNum = loc.line
+      columnNum = loc.column
+
       str += '${yellow}${cap.file}${uncolor}'
-      source = '\n' + printSource(cap.file, cap.line, cap.column) + '\n\n'
+      source = '\n' + printSource(cap.file, loc.line, loc.column) + '\n\n'
     else
       str += '${lgrey}${cap.file}${uncolor}'
 
-    str += ' ${cap.line}:${cap.column}'
+    str += ' ${lineNum}:${columnNum}'
     return source + str
   ).join('\n')
 
@@ -59,5 +66,13 @@ func firescriptErrorHandler ()
   this.stack = '${msg}${nl}${colorizedStack}'
 
   return '${red}Firescript Error${uncolor}'
+
+func getLocation (str filename, num line, num column)
+  log 'FN' filename
+  if filename.endsWith('.fire')
+    return {
+      line: 12,
+      column: 12
+    }
 
 Error.prototype.toString = firescriptErrorHandler
