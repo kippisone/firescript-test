@@ -1,0 +1,8 @@
+class Banana
+  constructor (opts)
+    this.isSweet = opts.isSweet
+
+  peel ()
+    throw new Error('No Bananas left!')
+
+export Banana

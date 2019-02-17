@@ -1,0 +1,113 @@
+import * as fs from 'fs'
+
+const red = '\u001b[38;5;160m'
+const yellow = '\u001b[38;5;226m'
+const dgrey = '\u001b[38;5;244m'
+const lgrey = '\u001b[38;5;250m'
+const azure = '\u001b[38;5;39m'
+const uncolor = '\u001b[m'
+
+export class ErrorMessage
+  parse (str callStack)
+    const stack = callStack.split('\n')
+    const reg = /at\s+(?:(.+?)\s+)?\(?(.+?):(\d+):(\d+)\)?/
+
+    const msg = stack.shift()
+    const fsStack = stack.map((line) =>
+      const cap = reg.capture(line, {
+        1: 'method'
+        2: 'file'
+        3: 'line'
+        4: 'column'
+      })
+
+      if !cap
+        return null
+
+      const fileData =
+        method: cap.method
+        file: cap.file
+        line: parseInt(cap.line)
+        column: parseInt(cap.column)
+        isNodeModule: false
+        isFireScriptFile: false
+
+      if cap.file.indexOf(/node_modules/) === -1
+        fileData.isNodeModule = true
+
+      if cap.file.endsWith('.fire')
+        fileData.isFireScriptFile = true
+        const loc = this.getLocation(fileData.file, fileData.line, fileData.column)
+        if loc
+          log 'LOCATION' loc
+          fileData.line = loc[0]
+          fileData.column = loc[1]
+
+      return fileData
+    )
+
+    this.error = msg
+    this.stack = fsStack
+
+    return {
+      error: this.error
+      stack: this.stack
+    }
+
+  getSource (str file, num line, num column)
+    const source = fs.readFileSync(file, 'utf8')
+    const lines = source.split('\n')
+    const editor = []
+
+    const start = Math.max(1, line - 3)
+    const stop = Math.min(lines.length, line + 3)
+
+    let str = ''
+    for i = start - 1; i < stop; i++
+      const l = lines[i]
+      const lineNum = String(i + 1).padStart(String(stop).length, ' ')
+      editor.push('${lgrey}${lineNum} ${dgrey}|${uncolor} ${lines[i]}')
+
+    return editor.join('\n')
+
+  getLocation(str file, num line, num column)
+    try
+      log 'GET -------------- LOCATION' file
+      const mod = require(file)
+      log 'GET -------------- MODULE' mod
+
+      if mod.__fsLocationMap
+        const loc = mod.__fsLocationMap.find((item) =>
+          log 'ITEM' item line column
+          return item[2] === line && item[3] === column
+        )
+
+        return loc
+    catch (err)
+      log 'ERR' err
+
+  toString ()
+    const stack = this.stack.map((err) =>
+      let str = ' at ${azure}${err.method}${uncolor} '
+      let source = ''
+
+      let lineNum = parseInt(err.line)
+      let columnNum = parseInt(err.column)
+
+      if err.file.indexOf('/node_modules/') !== -1
+        str += '${dgrey}${err.file}${uncolor}'
+      elif err.file.endsWith('.fire')
+        /* const loc = getLocation(err.file, lineNum, columnNum)
+        lineNum = loc.line
+        columnNum = loc.column */
+
+        str += '${yellow}${err.file}${uncolor}'
+        # source = '\n' + this.getSource(err.file, err.line, err.column) + '\n\n'
+      else
+        str += '${lgrey}${err.file}${uncolor}'
+
+      str += ' ${lineNum}:${columnNum}'
+      return source + str
+    )
+
+    return this.error + '\n' + stack.join('\n')

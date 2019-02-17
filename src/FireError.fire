@@ -63,6 +63,7 @@ func firescriptErrorHandler ()
   ).join('\n')
 
   const nl = '\n'
+  this.stackOrig = this.stack
   this.stack = '${msg}${nl}${colorizedStack}'
 
   return '${red}Firescript Error${uncolor}'

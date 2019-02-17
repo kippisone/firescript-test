@@ -1,7 +1,7 @@
 const path = require('path')
 const inspect = require('inspect.js')
 
-describe.only('FireError', () =>
+describe('FireError', () =>
   describe('class', () =>
     it('replace origin of errors in a call stack', () =>
       try

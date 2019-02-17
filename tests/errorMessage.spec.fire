@@ -1,0 +1,73 @@
+import * as path from 'path'
+import * as inspect from 'inspect.js'
+
+import ErrorMessage from '../src/ErrorMessage'
+
+describe('ErrorMessage', () =>
+  describe('parse()', () =>
+    it('generates a FireError message', () =>
+      const jsErrorArr =
+        'Error: FireError test'
+        '    at Context.it (/home/andi/Projects/Firescript/firescript-runtime/tests/fireError.spec.fire:7:15)'
+        '    at callFn (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runnable.js:372:21)'
+        '    at Test.Runnable.run (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runnable.js:364:7)'
+        '    at Runner.runTest (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:455:10)'
+        '    at /home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:573:12'
+        '    at next (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:369:14)'
+        '    at /home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:379:7'
+        '    at next (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:303:14)'
+        '    at Immediate.<anonymous> (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:347:5)'
+        '    at runCallback (timers.js:810:20)'
+        '    at tryOnImmediate (timers.js:768:5)'
+        '    at processImmediate [as _immediateCallback] (timers.js:745:5)'
+
+      const jsError = jsErrorArr.join('\n')
+
+      const errorMessage = new ErrorMessage()
+      const fsError = errorMessage.parse(jsError)
+
+      log 'FS-ERROR ----------------------------'
+      log fsError
+      log 'FS-ERROR ····························'
+
+      inspect(fsError).isEql({
+        error: 'Error: FireError test'
+        stack: []
+      })
+    )
+  )
+
+  describe.only('toString()', () =>
+    it('returns a FireError message', () =>
+      const jsErrorArr =
+        'Error: FireError test'
+        '    at Context.it (/home/andi/Projects/Firescript/firescript-runtime/tests/fixtures/sources/banana.fire:13:5)'
+        '    at callFn (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runnable.js:372:21)'
+        '    at Test.Runnable.run (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runnable.js:364:7)'
+        '    at Runner.runTest (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:455:10)'
+        '    at /home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:573:12'
+        '    at next (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:369:14)'
+        '    at /home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:379:7'
+        '    at next (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:303:14)'
+        '    at Immediate.<anonymous> (/home/andi/Projects/Firescript/firescript-runtime/node_modules/mocha/lib/runner.js:347:5)'
+        '    at runCallback (timers.js:810:20)'
+        '    at tryOnImmediate (timers.js:768:5)'
+        '    at processImmediate [as _immediateCallback] (timers.js:745:5)'
+
+      const jsError = jsErrorArr.join('\n')
+
+      const errorMessage = new ErrorMessage()
+      const fsError = errorMessage.parse(jsError)
+
+      log 'FS-ERROR ----------------------------'
+      log fsError
+      log 'FS-ERROR ····························'
+
+      const errString = errorMessage.toString()
+      inspect(errString).doesContain('Error: FireError test')
+      inspect(errString).doesContain('/home/andi/Projects/Firescript/firescript-runtime/tests/fixture/sources/banana.fire')
+      inspect(errString).doesContain('8:5')
+      inspect(errString).doesNotContain('13:5')
+    )
+  )
+)
