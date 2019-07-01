@@ -1,6 +1,6 @@
 {
   "name": "firescript-test",
-  "version": "0.0.0",
+  "version": "0.7.4",
   "description": "Integration & Syntax tests for Firescript",
   "main": "test.js",
   "directories": {
@@ -8,14 +8,21 @@
   },
   "scripts": {
     "start": "node test.js",
-    "test": "node test.js"
+    "test": "bin/firetest"
+  },
+  "bin": {
+    "firetest": "./bin/firetest"
   },
   "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",
   "dependencies": {
-    "inspect.js": "^1.11.7",
-    "lagoon-reporter": "^0.4.0",
-    "mocha": "^5.2.0"
+    "args": "^5.0.1",
+    "colorfy": "^2.1.0",
+    "firescript": "^0.8.5",
+    "inspect.js": "^1.11.8",
+    "lagoon-reporter": "^0.7.2",
+    "mocha": "^6.1.4",
+    "superfs": "^0.12.2"
   },
   "devDependencies": {},
   "repository": {
