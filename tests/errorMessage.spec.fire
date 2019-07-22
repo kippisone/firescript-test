@@ -37,7 +37,7 @@ describe('ErrorMessage', () =>
     )
   )
 
-  describe.only('toString()', () =>
+  describe('toString()', () =>
     it('returns a FireError message', () =>
       const jsErrorArr =
         'Error: FireError test'

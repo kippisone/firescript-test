@@ -19,7 +19,7 @@ export class FirescriptRuntime
     throw new TypeError('Unexpeted data type')
 
   static isTypeof (type, value)
-    switch (type)
+    switch type
       case TYPE_ANY
         return value !== undefined
       case TYPE_ARR
