@@ -1,7 +1,6 @@
 import * as inspect from 'inspect.js'
 import FirescriptRuntime from '..'
 
-
 describe('FirescriptRuntime', () =>
   describe('class', () =>
     it('should return a static class', () =>

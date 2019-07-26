@@ -69,7 +69,6 @@ func firescriptErrorHandler ()
   return '${red}Firescript Error${uncolor}'
 
 func getLocation (str filename, num line, num column)
-  log 'FN' filename
   if filename.endsWith('.fire')
     return {
       line: 12,

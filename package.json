@@ -15,9 +15,12 @@
   "author": "Andi Heinkelein <andifeind@noname-media.com>",
   "license": "MIT",
   "devDependencies": {
-    "firescript": "^0.9.0",
+    "firescript": "^0.9.8",
     "inspect.js": "^1.11.8",
-    "lagoon-reporter": "^0.7.3",
+    "lagoon-reporter": "^0.7.4",
     "mocha": "^6.2.0"
+  },
+  "dependencies": {
+    "superreg": "^0.2.1"
   }
 }

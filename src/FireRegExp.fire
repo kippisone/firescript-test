@@ -8,7 +8,7 @@ export class FireRegExp extends RegExp
     else
       const captureGroups = []
 
-      while (true)
+      while true
         const res = this.findCaptureGroups(value, groups)
 
         if !res
