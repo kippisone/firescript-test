@@ -26,7 +26,7 @@ func printSource (file, line, column)
 
 func firescriptErrorHandler ()
   const stack = this.stack.split('\n')
-  const reg = new FireRegExp(/at\s+(.+)\s+\((.+?):(\d+):(\d+)\)/)
+  const reg = /at\s+(.+)\s+\((.+?):(\d+):(\d+)\)/
 
   const msg = stack.shift()
   const colorizedStack = stack.map((line) =>

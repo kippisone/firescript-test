@@ -1,7 +1,4 @@
 export class FireRegExp extends RegExp
-  static escape (pattern)
-    # return pattern.replace(/[.\\|\]*+?\[(){}^$\/]/g, '\\$&')
-
   capture (value, groups)
     if this.flags.indexOf('g') === -1
       return this.findCaptureGroups(value, groups)
@@ -31,3 +28,6 @@ export class FireRegExp extends RegExp
     )
 
     return res
+
+  static escape (pattern)
+    # return pattern.replace(/[.\\|\]*+?\[(){}^$\/]/g, '\\$&')
