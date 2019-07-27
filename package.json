@@ -1,6 +1,6 @@
 {
   "name": "firescript-runtime",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "description": "Firescript runtime",
   "main": "app.js",
   "scripts": {
