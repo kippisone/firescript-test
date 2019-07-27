@@ -8,9 +8,9 @@ const azure = '\u001b[38;5;39m'
 const uncolor = '\u001b[m'
 
 export class ErrorMessage
-  parse (str callStack)
+  parse (callStack)
     const stack = callStack.split('\n')
-    const reg = /at\s+(?:(.+?)\s+)?\(?(.+?):(\d+):(\d+)\)?/
+    const reg = new FireRegExp(/at\s+(?:(.+?)\s+)?\(?(.+?):(\d+):(\d+)\)?/)
 
     const msg = stack.shift()
     const fsStack = stack.map((line) =>
@@ -56,7 +56,7 @@ export class ErrorMessage
       stack: this.stack
     }
 
-  getSource (str file, num line, num column)
+  getSource (file, line, column)
     const source = fs.readFileSync(file, 'utf8')
     const lines = source.split('\n')
     const editor = []
@@ -72,7 +72,7 @@ export class ErrorMessage
 
     return editor.join('\n')
 
-  getLocation(str file, num line, num column)
+  getLocation(file, line, column)
     try
       log 'GET -------------- LOCATION' file
       const mod = require(file)

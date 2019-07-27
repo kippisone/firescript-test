@@ -4,7 +4,8 @@
   "features": {
     "esModules": false,
     "esClasses": true,
-    "fireRTModuleName": "./"
+    "dissableRuntime": true,
+    "extendRegExp": false
   },
   "copy": [
     "$ROOT/package.json"

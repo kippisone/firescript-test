@@ -26,7 +26,7 @@ func printSource (file, line, column)
 
 func firescriptErrorHandler ()
   const stack = this.stack.split('\n')
-  const reg = /at\s+(.+)\s+\((.+?):(\d+):(\d+)\)/
+  const reg = new FireRegExp(/at\s+(.+)\s+\((.+?):(\d+):(\d+)\)/)
 
   const msg = stack.shift()
   const colorizedStack = stack.map((line) =>
@@ -68,7 +68,7 @@ func firescriptErrorHandler ()
 
   return '${red}Firescript Error${uncolor}'
 
-func getLocation (str filename, num line, num column)
+func getLocation (filename, line, column)
   if filename.endsWith('.fire')
     return {
       line: 12,
